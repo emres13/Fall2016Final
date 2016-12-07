@@ -74,17 +74,17 @@ function setup() {
 	textFont("Courier");
 	text("please pick a color that associates with your feelings: ", 100, 68);
 	
-	textSize(18);
-	textFont("Courier");
-	text("explain your feeling with a one word answer: ", 600, 420);
+	//textSize(18);
+	//textFont("Courier");
+	//text("explain your feeling with a one word answer: ", 600, 420);
 	
-	input2 = createInput();
- 	input2.position(707, 430);
- 	input2.size(250, 14);
+	//input2 = createInput();
+ 	//input2.position(707, 430);
+ 	//input2.size(250, 14);
  	
- 	button = createButton('submit');
-  	button.position(800, 460);
-  	button.mousePressed(greet);
+ 	//button = createButton('submit');
+  	//button.position(800, 460);
+  	//button.mousePressed(greet);
   	
   	
 }
@@ -102,6 +102,10 @@ function draw() {
   image(navy, 320, 310)
   image(purple, 320, 530)
   image(pink, 540, 530)
+  
+  stroke(2);
+  smooth();
+  rect(754,310,200,200);
 
 
 
