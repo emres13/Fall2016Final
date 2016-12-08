@@ -1,8 +1,3 @@
-var express = require('express');
-var app = express();
-var server = require('http').Server(app);
-var io = require('socket.io')(server);
-
 
 
 var serial;                            // variable to hold an instance of the serialport library
@@ -10,48 +5,22 @@ var portName = '/dev/cu.usbmodem1411'; // fill in your serial port name here
 var inData;                            // for incoming serial data
 var outByte = 0;                       // for outgoing data
 
+var server = http.createServer(handleRequest);
+server.listen(8081);
 
-app.use('/', express.static(__dirname + '/public'));
+var io = require('socket.io').listen(server);
 
-function serverUpCallback(){
-	console.log("listening on port: " + port);
-}
 
 var input2, button, greeting;
 var blue, red, green, orange, yellow, navy, purple, pink ;  // Declare variable 'img'.
 
 var checkbox;
 
-function incomingSocketHandler(socket){
-	console.log('a user has connected');
-	console.log(socket);
-	console.log(socket.handshake.headers['user-agent']);
-	console.log(socket.conn.server.clientsCount);
-
-	socket.on('disconnect', function(){
-		console.log("User has disconnected");
-	});
-
-	socket.userName = "User " + socket.conn.server.clientsCount;
-
-	socket.emit("welcome message", "Welcome user!");
-	socket.on('chat message', function(dataFromClient){
-		console.log(dataFromClient);
-		var dataFromServer = {
-			'userName' : socket.userName,
-			'message': dataFromClient.msgText
-		}
-		console.log(dataFromServer);
-		io.emit('latest message', dataFromServer);
-		socket.emit('message confirmation', {'text' : "Your message was sent"});
-	});
-
-}
-
-io.on('connection', incomingSocketHandler);
-
-server.listen(port, serverUpCallback);
-
+io.sockets.on('connection',
+  function (socket) {
+    console.log("We have a new client: " + socket.id);
+  }
+);
 
 function preload(){
 
