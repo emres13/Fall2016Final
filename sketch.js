@@ -5,6 +5,7 @@ var outByte = 0;                       // for outgoing data
 var input2, button, greeting;
 var blue, red, green, orange, yellow, navy, purple, pink ;  // Declare variable 'img'.
 
+var checkbox;
 
 
 
@@ -33,57 +34,61 @@ function setup() {
   serial.on('error', serialError); // callback for errors
   serial.open(portName);           // open a serial port
 	  
+  	textFont("Courier");
+  	
+
+
+  checkbox = createCheckbox('red', false);
+  checkbox.changed(myCheckedEvent1);
+  checkbox.position(180,292);
+  
+  checkbox = createCheckbox('orange', false);
+  checkbox.changed(myCheckedEvent2);
+  checkbox.position(380, 292);
+  
+  checkbox = createCheckbox('yellow', false);
+  checkbox.changed(myCheckedEvent3);
+  checkbox.position(610,292);
+  
+   checkbox = createCheckbox('blue', false);
+  checkbox.changed(myCheckedEvent4);
+  checkbox.position(170, 509);
+  
+  checkbox = createCheckbox('navy', false);
+  checkbox.changed(myCheckedEvent5);
+  checkbox.position(385, 509);
+
+  checkbox = createCheckbox('green', false);
+  checkbox.changed(myCheckedEvent6);
+  checkbox.position(610, 509);
+  
+	
+	  checkbox = createCheckbox('purple', false);
+  checkbox.changed(myCheckedEvent7);
+  checkbox.position(835, 509);
   
   
-  
-  
-  textSize(14);
-	textFont("Courier");
-	text("red", 190, 304);
+	  checkbox = createCheckbox('pink', false);
+  checkbox.changed(myCheckedEvent8);
+  checkbox.position(840,292);
+
 	
-	textSize(14);
-	textFont("Courier");
-	text("orange", 390, 304);
-	
-	textSize(14);
-	textFont("Courier");
-	text("yellow", 610, 304);
-	
-	textSize(14);
-	textFont("Courier");
-	text("blue", 190, 523);
-	
-	textSize(14);
-	textFont("Courier");
-	text("navy", 395, 523);
-	
-	
-	textSize(14);
-	textFont("Courier");
-	text("green", 185, 743);
-	
-	textSize(14);
-	textFont("Courier");
-	text("purple", 393, 743);
-  
-  textSize(14);
-	textFont("Courier");
-	text("pink", 623, 743);
+
 	  
 	textSize(18);
 	textFont("Courier");
-	text("please pick a color that associates with your feelings: ", 100, 68);
+	text("please ; pick a color that associates with your feelings: ", 100, 68);
 	
-	//textSize(18);
-	//textFont("Courier");
-	//text("explain your feeling with a one word answer: ", 600, 420);
+	textSize(18);
+	textFont("Courier");
+	text("please ; explain how you feel with a single word: ", 100, 570);
 	
-	//input2 = createInput();
- 	//input2.position(707, 430);
- 	//input2.size(250, 14);
+	input2 = createInput();
+ 	input2.position(100, 585);
+ 	input2.size(250, 14);
  	
- 	//button = createButton('submit');
-  	//button.position(800, 460);
+ 	button = createButton('submit color + text');
+  	button.position(365, 587);
   	//button.mousePressed(greet);
   	
   	
@@ -92,36 +97,101 @@ function setup() {
 
 
 function draw() {
-	
-	
+		
   image(blue, 100, 310);
-  image(green, 100, 530);
+  image(green, 540, 310);
   image(yellow, 540, 90);
   image(orange, 320, 90)
   image(red, 100, 90)
   image(navy, 320, 310)
-  image(purple, 320, 530)
-  image(pink, 540, 530)
+  image(purple, 760, 310)
+  image(pink, 760, 90)
   
-  stroke(2);
   smooth();
-  rect(754,310,200,200);
-
-
-
-  noStroke();
+	  
+}
   
   
+function myCheckedEvent1() {
+  if (this.checked()) {
+    console.log("Checking Red!");
+    
+
+  } else {
+    console.log("Unchecking Red!");
   }
-  
-  
-
-function greet() {
-  var name = input.value();
-  greeting.html('hello '+name+'!');
-  input.value('');
 }
 
+function myCheckedEvent2() {
+  if (this.checked()) {
+    console.log("Checking Orange!");
+
+  } else {
+    console.log("Unchecking Orange!");
+
+  }
+}
+
+function myCheckedEvent3() {
+  if (this.checked()) {
+    console.log("Checking Yellow!");
+ 
+  } else {
+    console.log("Unchecking Yellow!");
+
+  }
+}
+
+function myCheckedEvent4() {
+  if (this.checked()) {
+    console.log("Checking Blue!");
+
+  } else {
+    console.log("Unchecking Blue!");
+
+  }
+}
+
+function myCheckedEvent5() {
+  if (this.checked()) {
+    console.log("Checking Navy!");
+  
+  } else {
+    console.log("Unchecking Navy!");
+
+  }
+}
+
+
+function myCheckedEvent6() {
+  if (this.checked()) {
+    console.log("Checking Green!");
+ 
+  } else {
+    console.log("Unchecking Green!");
+
+  }
+}
+function myCheckedEvent7() {
+  if (this.checked()) {
+    console.log("Checking Purple!");
+
+
+  } else {
+    console.log("Unchecking Purple!");
+
+  }
+}
+function myCheckedEvent8() {
+  if (this.checked()) {
+    console.log("Checking Pink!");
+   
+
+  } else {
+    console.log("Unchecking Pink!");
+
+  }
+}
 
 
 
